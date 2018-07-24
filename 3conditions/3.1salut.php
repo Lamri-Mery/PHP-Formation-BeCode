@@ -17,6 +17,8 @@
 		$msg = 'Salut l\'adulte!';
 	} elseif ($age > "115") {
 		$msg = 'Wow! Toujours vivant?';
+	} else {
+		$msg ='';
 	}
 	
 ?>
@@ -33,7 +35,7 @@
 	</head>
 	<body>
 		<form action="" method="GET">
-		<input name="age" type="number" step="1" value="0" min="0" max="200">
+		<label>Age</label><input name="age" type="number" step="1" value="0" min="0" max="200">
 		<button>valider</button>
 		</form>
 		<p> <?php echo $msg; ?></p>

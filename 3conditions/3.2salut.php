@@ -8,20 +8,41 @@
 
  -->
 <?php  
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
 	// Dans les crochets de $_GET[] tu inscrits les valeurs de 'name' dans le formulaire. Le name est selectionné afin affiché la valeur du formulaire.
 	
-	$age = $_POST['age'];
-	$lang = $_POST['eng'];
-	$gender = $_POST['gender'];
-
-	if ($age >= "0" AND $age < "12") {
-		$msg = 'Salut petit!';
-	} elseif ($age >= "12" AND $age < "18") {
-		$msg = 'Salut l\'ado!';
-	} elseif ($age >= "18" AND $age <= "115") {
-		$msg = 'Salut l\'adulte!';
-	} elseif ($age > "115") {
-		$msg = 'Wow! Toujours vivant?';
+	if (isset($_POST['submit'])){
+		$age = $_POST['age'];
+		$lang = $_POST['eng'];
+		$gender = $_POST['gender'];
+		if ($lang == 'Yes') {
+			if ($gender == 'Boy/Garçon') {
+				if ($age >= "0" AND $age < "12") {
+					$msg = 'Hello boy!';
+				} elseif ($age >= "12" AND $age < "18") {
+					$msg = 'Hello teenage boy!';
+				} elseif ($age >= "18" AND $age <= "115") {
+					$msg = 'Hello sir!';
+				} elseif ($age > "115") {
+					$msg = 'Wow! Still alive, old man?';
+				}
+			} elseif ($gender == 'Girl/Fille') {
+				if ($age >= "0" AND $age < "12") {
+					$msg = 'Hello girl!';
+				} elseif ($age >= "12" AND $age < "18") {
+					$msg = 'Hello teenage girl!';
+				} elseif ($age >= "18" AND $age <= "115") {
+					$msg = 'Hello lady!';
+				} elseif ($age > "115") {
+					$msg = 'Wow! Still alive, old lady?';
+				} 
+			}
+		}else {
+			$msg ='Va apprendre l\'anglais';
+		}
+	} else{
+		$msg='';
 	}
 	
 ?>
@@ -37,17 +58,18 @@
 		<link rel="stylesheet" href="">
 	</head>
 	<body>
-		<form action="" method="GET">
+		<form action="" method="POST">
 		 <fieldset>
 	        <legend>Parles-tu anglais?</legend>
-				<input type="radio" id="yes" name="eng" checked /><label for="yes">Yes</label>
-				<input type="radio" id="no" name="eng" /><label for="no">No</label>
-				<legend>Quel est ton genre ?</legend>
-				<input type="radio" id="girl" name="gender" checked /><label for="yes">Girl/fille</label>
-				<input type="radio" id="boy" name="gender" /><label for="no">Boy/Garçon</label>
-
-			<input name="age" type="number" step="1" value="0" min="0" max="200">
-			<button>valider</button>
+				<input type="radio" id="yes" name="eng" value="Yes" checked /><label for="Yes">Yes</label>
+				<input type="radio" id="no" name="eng" value="No" /><label for="No">No</label>
+			<legend>Quel est ton genre ?</legend>
+				<input type="radio" id="girl" name="gender" value="Girl/Fille" checked /><label for="Girl/Fille">Girl/Fille</label>
+				<input type="radio" id="boy" name="gender" value="Boy/Garçon" /><label for="Boy/Garçon">Boy/Garçon</label>
+			<legend>Age</legend>
+				<input name="age" type="number" step="1" value="0" min="0" max="200">
+				<button name="submit">valider</button>
+			<!-- <input type="submit" name="submit" value="envoyer"> -->
 		</fieldset>
 		</form>
 		<p> <?php echo $msg; ?></p>
