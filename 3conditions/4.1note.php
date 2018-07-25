@@ -8,12 +8,12 @@
 	Si la note est 19 ou 20, affiche "Police! Arrêtez ce tricheur!".
  -->
 <?php  
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	// error_reporting(E_ALL);
+	// ini_set('display_errors', 1);
 	// Dans les crochets de $_GET[] tu inscrits les valeurs de 'name' dans le formulaire. Le name est selectionné afin affiché la valeur du formulaire.
-	
-	if (isset($_POST['submit'])){
-		$note = $_POST['note'];
+	$submit = isset($_POST['submit']);
+	if ($submit == true){
+		$note = htmlspecialchars($_POST['note']);
 			if ($note >= "1" AND $note < "3") {
 				$msg = 'Ce travail est nul.';
 			} elseif ($note >= "6" AND $note < "10") {
@@ -46,7 +46,7 @@
 		<form action="" method="POST">
 		 <fieldset>
 			<legend>Note</legend>
-				<input name="note" type="number" step="1" value="0" min="0" max="10">
+				<input name="note" type="number" step="1" value="1" min="1" max="20">
 				<button name="submit">valider</button>
 			<!-- <input type="submit" name="submit" value="envoyer"> -->
 		</fieldset>
