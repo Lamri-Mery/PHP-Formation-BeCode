@@ -7,34 +7,32 @@
     Si l'âge est entre 18 et 115 ans et que l'utilisateur répond "yes", affiche "Hello Sir!" ou "Hello Lady!" selon son genre. - Si l'âge est supérieur à 115 ans et que l'utilisateur répond "yes", affiche "Wow! Still alive, old man?" ou "old lady?" selon son genre.
 
  -->
-<?php  
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+<?php
 	// Dans les crochets de $_GET[] tu inscrits les valeurs de 'name' dans le formulaire. Le name est selectionné afin affiché la valeur du formulaire.
-	
-	if (isset($_POST['submit'])){
-		$age = $_POST['age'];
+	$submit = isset($_POST['submit']);
+	if ($submit == true){
+		$age = htmlspecialchars($_POST['age']);
 		$lang = $_POST['eng'];
 		$gender = $_POST['gender'];
 		if ($lang == 'Yes') {
 			if ($gender == 'Boy/Garçon') {
-				if ($age >= "0" AND $age < "12") {
+				if ($age >= 0 AND $age < 12) {
 					$msg = 'Hello boy!';
-				} elseif ($age >= "12" AND $age < "18") {
+				} elseif ($age >= 12 AND $age < 18) {
 					$msg = 'Hello teenage boy!';
-				} elseif ($age >= "18" AND $age <= "115") {
+				} elseif ($age >= 18 AND $age <= 115) {
 					$msg = 'Hello sir!';
-				} elseif ($age > "115") {
+				} elseif ($age > 115) {
 					$msg = 'Wow! Still alive, old man?';
 				}
 			} elseif ($gender == 'Girl/Fille') {
-				if ($age >= "0" AND $age < "12") {
+				if ($age >= 0 AND $age < 12) {
 					$msg = 'Hello girl!';
-				} elseif ($age >= "12" AND $age < "18") {
+				} elseif ($age >= 12 AND $age < 18) {
 					$msg = 'Hello teenage girl!';
-				} elseif ($age >= "18" AND $age <= "115") {
+				} elseif ($age >= 18 AND $age <= 115) {
 					$msg = 'Hello lady!';
-				} elseif ($age > "115") {
+				} elseif ($age > 115) {
 					$msg = 'Wow! Still alive, old lady?';
 				} 
 			}

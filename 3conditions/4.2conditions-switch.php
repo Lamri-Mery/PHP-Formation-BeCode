@@ -12,10 +12,10 @@
 	
 		
 	$submit = isset($_POST['submit']);
-
+	//var_dump($submit);
 	switch ($submit){
 		case true:
-		$note = $_POST['note'];
+			$note = htmlspecialchars($_POST['note']);
 		switch ($note) {
 			case 1:
 			case 2:
@@ -47,14 +47,13 @@
 		    case 20:
 				$msg = 'Arrêtez ce tricheur!';
 				break;
-
-			default :
+			default:
 				$msg = 'Merci de changer la note de l\'élève';
 				break;
-		} case false :
+		} break;
+		case false:
 			$msg = '';
-			break;
-	} 	var_dump($submit);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="fr">

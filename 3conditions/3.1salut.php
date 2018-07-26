@@ -6,23 +6,24 @@
  -->
 <?php  
 	// Dans les crochets de $_GET[] tu inscrits les valeurs de 'name' dans le formulaire. Le name est selectionné afin affiché la valeur du formulaire.
-	$submit = isset($_POST['submit']);
-	// if ($submit == true){
-		@$age = $_GET['age'];
-		if ($age >= '0' AND $age < '12') {
+	$submit = isset($_GET['submit']);
+	//var_dump($submit);
+	if ($submit == true){
+		$age = htmlspecialchars($_GET['age']);
+		if ($age >= 0 AND $age < 12) {
 			$msg = 'Salut petit!';
-		} elseif ($age >= '12' AND $age < '18') {
+		} elseif ($age >= 12 AND $age < 18) {
 			$msg = 'Salut l\'ado!';
-		} elseif ($age >= '18' AND $age <= '115') {
+		} elseif ($age >= 18 AND $age <= 115) {
 			$msg = 'Salut l\'adulte!';
-		} elseif ($age > '115') {
+		} elseif ($age > 115) {
 			$msg = 'Wow! Toujours vivant?';
 		} else {
-			$msg ='a';
+			$msg ='';
 		} 
-	// } else {
-	// 	$msg = 'b';
-	// }
+	} else {
+		$msg = '';
+	}
 	
 ?>
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
 	<body>
 		<form action="" method="GET">
 		<label>Age</label><input name="age" type="number" step="1" value="0" min="0" max="200">
-		<button name="submit">valider</button>
+		<button name="submit" type="submit">valider</button>
 		</form>
 		<p> <?php echo $msg; ?></p>
 		<!-- jQuery & JavaScript -->

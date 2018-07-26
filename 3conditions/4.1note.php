@@ -7,22 +7,20 @@
 	Si la note est 15, 16, 17, ou 18, affiche "Bravo!".
 	Si la note est 19 ou 20, affiche "Police! Arrêtez ce tricheur!".
  -->
-<?php  
-	// error_reporting(E_ALL);
-	// ini_set('display_errors', 1);
+<?php
 	// Dans les crochets de $_GET[] tu inscrits les valeurs de 'name' dans le formulaire. Le name est selectionné afin affiché la valeur du formulaire.
 	$submit = isset($_POST['submit']);
 	if ($submit == true){
 		$note = htmlspecialchars($_POST['note']);
-			if ($note >= "1" AND $note < "3") {
+			if ($note >= 1 AND $note < 3) {
 				$msg = 'Ce travail est nul.';
-			} elseif ($note >= "6" AND $note < "10") {
+			} elseif ($note >= 6 AND $note < 10) {
 				$msg = 'Ce travail n\'est pas terrible.';
-			} elseif ($note == "10") {
+			} elseif ($note == 10) {
 				$msg = 'Tout juste!';
-			} elseif ($note >= "11" AND $note < "18") {
+			} elseif ($note >= 11 AND $note < 18) {
 				$msg = 'Bravo!';
-			} elseif ($note == "19" AND $note == "20") {
+			} elseif ($note == 19 AND $note == 20) {
 				$msg = 'Police! Arrêtez ce tricheur!';
 			} else {
 				$msg = '';
